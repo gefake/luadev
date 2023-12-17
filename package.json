@@ -1,0 +1,92 @@
+{
+    "name": "luadev",
+    "displayName": "LuaDev",
+    "description": "LuaDev integration for VS Code.",
+    "icon": "images/logo.png",
+    "version": "0.1.3",
+    "publisher": "ultango",
+    "engines": {
+        "vscode": "^1.0.0"
+    },
+    "author": {
+        "name": "ultango"
+    },
+    "contributors": [
+        {
+            "name": "Lixquid",
+            "url": "http://lixquid.com"
+        }
+    ],
+    "license": "GPL-3.0",
+    "categories": [
+        "Other"
+    ],
+    "activationEvents": [
+        "onCommand:gmod-luadev.server",
+        "onCommand:gmod-luadev.shared",
+        "onCommand:gmod-luadev.clients",
+        "onCommand:gmod-luadev.self",
+        "onCommand:gmod-luadev.client"
+    ],
+    "main": "./out/src/extension",
+    "contributes": {
+        "configuration": {
+            "title": "GMod LuaDev Settings",
+            "properties": {
+                "gmod-luadev.host": {
+                    "type": "string",
+                    "default": "",
+                    "description": "Game server address. Leave blank to use localhost"
+                },
+                "gmod-luadev.port": {
+                    "type": "integer",
+                    "default": 27099,
+                    "description": "Port number to communicate with LuaDev over."
+                },
+                "gmod-luadev.hidescriptname": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "If false, script names will be transmitted with the script when sent."
+                }
+            }
+        },
+        "commands": [
+            {
+                "command": "gmod-luadev.server",
+                "title": "Send to Server",
+                "category": "GMod LuaDev"
+            },
+            {
+                "command": "gmod-luadev.shared",
+                "title": "Send to Shared",
+                "category": "GMod LuaDev"
+            },
+            {
+                "command": "gmod-luadev.clients",
+                "title": "Send to all Clients",
+                "category": "GMod LuaDev"
+            },
+            {
+                "command": "gmod-luadev.self",
+                "title": "Send to Self",
+                "category": "GMod LuaDev"
+            },
+            {
+                "command": "gmod-luadev.client",
+                "title": "Send to Client",
+                "category": "GMod LuaDev"
+            }
+        ]
+    },
+    "scripts": {
+        "vscode:prepublish": "tsc -p ./",
+        "compile": "tsc -watch -p ./",
+        "postinstall": "node ./node_modules/vscode/bin/install",
+        "pkgvars": "node ./node_modules/vscode/bin/install"
+    },
+    "devDependencies": {
+        "@types/node": "^14.14.37",
+        "typescript": "^4.2.4",
+        "vscode": "^1.1.10"
+    }
+}
